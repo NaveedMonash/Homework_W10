@@ -18,7 +18,7 @@
     },
     "title": "Air Traffic Passengers in Malaysia (2000-2020)",
     "data": {
-      "url": "../data/cleaned_air_traffic_passengers.csv"
+      "url": "https://raw.githubusercontent.com/NaveedMonash/Homework_W10/refs/heads/main/data/cleaned_air_traffic_passengers.csv"
     },
     "height": 500,
     "width": 700,
