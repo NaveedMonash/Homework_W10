@@ -1,0 +1,99 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "config": {
+      "title": {"fontSize": 20, "font": "Arial", "fontWeight": "bold"},
+      "axis": {
+        "labelFontSize": 12,
+        "titleFontSize": 14,
+        "titleFont": "Arial",
+        "labelFont": "Arial"
+      },
+      "legend": {
+        "titleFontSize": 14,
+        "labelFontSize": 12,
+        "titleFont": "Arial",
+        "labelFont": "Arial"
+      },
+      "view": {"stroke": "transparent"}
+    },
+    "title": "Air Traffic Passengers in Malaysia (2000-2020)",
+    "data": {
+      "url": "../data/cleaned_air_traffic_passengers.csv"
+    },
+    "height": 500,
+    "width": 700,
+    "layer": [
+      {
+        "mark": "circle",
+        "encoding": {
+          "x": {
+            "field": "Year",
+            "type": "ordinal",
+            "title": "Year"
+          },
+          "y": {
+            "field": "Passengers_Count",
+            "type": "quantitative",
+            "title": "Number of Passengers"
+          },
+          "size": {
+            "field": "Passengers_Count",
+            "type": "quantitative",
+            "scale": {"range": [50, 500]},
+            "title": "Passenger Count"
+          },
+          "color": {
+            "field": "Category",
+            "type": "nominal",
+            "title": "Flight Category"
+          },
+          "tooltip": [
+            {"field": "Category", "type": "nominal", "title": "Flight Type"},
+            {"field": "Year", "type": "ordinal", "title": "Year"},
+            {"field": "Passengers_Count", "type": "quantitative", "title": "Passenger Count"}
+          ]
+        }
+      },
+      {
+        "mark": "rule",
+        "encoding": {
+          "x": {"datum": 2019},
+          "color": {"value": "red"},
+          "tooltip": {"value": "Year 2019: Peak Passengers"}
+        }
+      },
+      {
+        "mark": {
+          "type": "text",
+          "align": "left",
+          "baseline": "middle",
+          "fontSize": 12,
+          "fontWeight": "normal",
+          "dx": 5,
+          "dy": -5
+        },
+        "encoding": {
+          "x": {"datum": 2019},
+          "y": {"datum": 27767220},
+          "text": {"value": "Peak Year: 27.77M Passengers (2019)"},
+          "tooltip": {"value": "Annotation: Peak year for air traffic"}
+        }
+      }
+    ],
+    "params": [
+      {
+        "name": "Passengers_Filter",
+        "value": 0,
+        "bind": {
+          "input": "range",
+          "min": 0,
+          "max": 20000000,
+          "step": 500000,
+          "name": "Minimum Passengers: "
+        }
+      }
+    ],
+    "transform": [
+      {"filter": "datum.Passengers_Count > Passengers_Filter"}
+    ]
+}

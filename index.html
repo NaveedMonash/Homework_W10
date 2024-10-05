@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FIT3179 Week 10 Homework</title>
+
+    <!-- Import Vega & Vega-Lite -->
+    <script src="https://cdn.jsdelivr.net/npm/vega@5.20.2"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.1.0"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.17.0"></script>
+
+    <!-- Link to custom CSS -->
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+    <h1>Air Traffic in Malaysia</h1>
+
+    <!-- Container for the first visualization (Map from Week 9) -->
+    <div id="map_visualisation">
+        <h2>Map of Airports in Malaysia</h2>
+    </div>
+
+    <!-- Container for the second visualization (Bubble Plot) -->
+    <div id="bubble_visualisation">
+        <h2>Air Traffic Passengers Bubble Plot (2000-2020)</h2>
+    </div>
+
+    <!-- JavaScript to embed the visualizations -->
+    <script type="text/javascript">
+        // Embed the map visualization from Week 9
+        vegaEmbed('#map_visualisation', 'js/symbol_map.vg.json').then(function(result) {
+            // Access the Vega view instance as result.view
+        }).catch(console.error);
+
+        // Embed the bubble plot visualization
+        vegaEmbed('#bubble_visualisation', 'js/bubble_plot.vg.json').then(function(result) {
+            // Access the Vega view instance as result.view
+        }).catch(console.error);
+    </script>
+
+</body>
+</html>
